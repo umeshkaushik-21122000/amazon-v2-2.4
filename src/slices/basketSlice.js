@@ -1,14 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [{
-    "id": 14,
-    "title": "Unbranded Fresh Gloves",
-    "price": 258,
-    "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-    "category":"Clothes",
-    "image": "https://api.lorem.space/image/fashion?w=640&h=480&r=8311"
-    }],
+  items: [],
 };
 
 export const basketSlice = createSlice({
