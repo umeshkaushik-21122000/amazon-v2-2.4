@@ -20,11 +20,12 @@ function Header() {
   const items=useSelector(selectItems);
 
   return (
+    
     <header>
 
       {/*left area*/}
 
-      <div className="flex items-center bg-amazon_blue p-1 flex-grow">
+      <div className="flex items-center bg-amazon_blue p-1 flex-grow ">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
           
