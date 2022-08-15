@@ -7,10 +7,32 @@ import CheckoutProduct from '../components/CheckoutProduct'
 import { useSession } from 'next-auth/react'
 import CurrencyFormat from 'react-currency-format'
 import Footer from '../components/Footer'
+import { loadStripe } from '@stripe/stripe-js'
+import axios from 'axios'
+
+    const stripepromise=loadStripe(process.env.stripe_public_key);
+
 function checkout() {
     const items=useSelector(selectItems);
     const { data: session } = useSession();
     const total=useSelector(selecttotal);
+    const createcheckoutsession= async ()=>{
+        
+        const stripe=await stripepromise;
+
+        const checkoutsession= await axios.post("/api/create-checkout-session",
+        {
+            items: items,
+            email : session.user.email,
+        }
+        );
+
+        const result=await stripe.redirectToCheckout({
+            sessionId: checkoutsession.data.id
+        })
+
+        if(result.error) alert(result.error.message);
+    };
 
   return (
     <div className='bg-gray-100 '>
@@ -57,8 +79,9 @@ function checkout() {
                 </span>
                 </h2>
                     <button 
+                        role='link'
+                        onClick={createcheckoutsession}
                         disabled={!session}
-
                     className= {`${!session ? ' p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500 active:from-gray-500 cursor-not-allowed  font-bold':"button mt-2" }`}>
                      {!session ? "signin to checkout " : "proceed to checkout"}
                         </button>
