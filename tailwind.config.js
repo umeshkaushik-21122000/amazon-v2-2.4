@@ -15,7 +15,7 @@ module.exports = {
       },
     },
     fontFamily:{
-      sans  :['Gayathri', 'sans-serif']
+      sans  :[ 'Bebas Neue', "cursive"]
     },
   },
   variants: {

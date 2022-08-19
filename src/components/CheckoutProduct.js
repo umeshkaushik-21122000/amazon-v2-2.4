@@ -51,11 +51,9 @@ import { useDispatch } from 'react-redux';
 
       </div>
       <div className='flex flex-col space-y-2 m-auto justify-items-end '>
-      <button onClick={addItemtoBasket} className='button'>add to basket</button> 
-         <button onClick={removeItemfromBasket} className='button'>remove from basket</button> 
+      <button onClick={addItemtoBasket} className='button'>Add to Basket</button> 
+         <button onClick={removeItemfromBasket} className='button'>Remove from Basket</button> 
       </div>
-
-      
       </div>
   )
 }

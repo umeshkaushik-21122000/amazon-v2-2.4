@@ -83,7 +83,7 @@ function checkout() {
                         onClick={createcheckoutsession}
                         disabled={!session}
                     className= {`${!session ? ' p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500 active:from-gray-500 cursor-not-allowed  font-bold':"button mt-2" }`}>
-                     {!session ? "signin to checkout " : "proceed to checkout"}
+                     {!session ? "SignIn to checkout " : "Proceed to Checkout"}
                         </button>
                     </>
                 )

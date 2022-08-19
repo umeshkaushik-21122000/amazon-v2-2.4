@@ -10,14 +10,32 @@ import {signIn,signOut,useSession} from "next-auth/react"
 import { useRouter } from 'next/router'
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
+import { useState } from "react";
 
-function Header() {
+
+
+function Header(products) {
+
+ 
   
   const { data: session } = useSession();
 
   const router=useRouter()
 
   const items=useSelector(selectItems);
+
+  const [input,setinput]=useState("");
+
+    
+  const search = () => {
+
+    router.push({
+        pathname: '/search',
+        query: {
+           mytitle: input
+        }
+    });
+}
 
   return (
     
@@ -44,8 +62,14 @@ function Header() {
           <input
             className="p-2 h-full w-6 flex-grow rounded-l-md focus:outline-none"
             type="text"
+            value={input}
+            placeholder="Search ..."
+            onChange={(event)=>{
+                setinput(event.target.value)
+            }}
+            
           />
-          <SearchIcon className="h-12 p-4" />
+          <SearchIcon onClick={search}  className="h-12 p-4" />
         </div>
 
         {/*right area*/}
@@ -54,14 +78,14 @@ function Header() {
           
           <div  onClick={!session?signIn:signOut} className="link">
             <p onClick={signIn}>
-              {session ? " hello "+session.user.name:"sign In"}
+              {session ? " Hello "+session.user.name:"Sign In"}
             </p>
-            <p className="font-extrabold">account & list</p>
+            <p className="font-extrabold">Account & List</p>
           </div>
 
           <div className="link">
-            <p>return</p>
-            <p className="font-extrabold">& order</p>
+            <p>Return</p>
+            <p className="font-extrabold">& Order</p>
           </div>
 
           <div onClick={()=>router.push("/checkout")} className="realtive link flex items-center">
