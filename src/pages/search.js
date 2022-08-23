@@ -13,13 +13,38 @@ function Search() {
     const router = useRouter();
     const { mytitle} = router.query;
     var requiredResults=[];
-       
+    var requiredResults2=[];
         items.map((item)=>{
-            if(item.title===mytitle){
+            if(item.title.toLowerCase().includes(mytitle.toLowerCase())){
                 requiredResults.push({item})
             }
         })
+
+        console.log(requiredResults);
+
+        const spi={
+            id:1,
+            title:"",
+            category:"",
+            price:1,
+            rating:1,
+            description:"",
+            image:""
+        }
+
+        requiredResults.map((x)=>{
+            spi.id=x.id;
+            spi.title=x.title;
+            spi.category="custom";
+            spi.price=x.price;
+            spi.rating=rating;
+            spi.description=x.description
+            spi.image=x.images[0];
+            requiredResults2.push(spi);
+        })
    
+            console.log(spi);
+
     return (
         <div className="">
             <Header  />
@@ -41,15 +66,13 @@ function Search() {
                     </div>
                     <div className="flex flex-col">
                         {requiredResults.map(
-                            ({id,title,price,description,category,image}) => (
+                            ({id,title,category,images,price}) => (
                                 <InfoCard
-                                    key={id}
-                                    name={title}
-                                    img={image}
-                                    description={description}
-                                    price={price}
-                                    rating={0}
+                                    id={id}
+                                    title={title}
                                     category={category}
+                                    images={images[0]}
+                                    price={price}
                                 />
                             )
                         )}

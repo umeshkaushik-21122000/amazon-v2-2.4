@@ -4,14 +4,15 @@ import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from 'react-redux' 
 import { addToBasket } from '../slices/basketSlice'
 
-function InfoCard({id,title,price,description,category,images}) {
+function InfoCard({id,title,category,description,price,images}) {
     const [cartStatus, setcartStatust] = useState(false);
     const dispatch = useDispatch();
     const [rating] = useState(Math.floor(((Math.random()*10)%5)+1));
-    const [hasPrime]=useState(Math.random()<0.5)
+    const [hasPrime]=useState(Math.random()<0.5);
+    console.log(id," ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     const addItemToBasket = () => {
         const product = {
-            id,
+                id,
                 title,
                 price,
                 description,
@@ -25,8 +26,9 @@ function InfoCard({id,title,price,description,category,images}) {
     }
     return (
         <div className="flex py-7 px-2 border-b cursor-pointer hover:shadow-lg transition duration-200 ease-out first:border-t">
+       
             <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
-                <Image className="rounded-2xl" src={images} height={200} width={200} layout="fill" objectFit="cover" />
+                <img className="rounded-2xl" src={images} height={200} width={200} layout="fill" objectFit="cover" />
             </div>
             <div className="flex flex-col flex-grow pl-5">
                 <div className="flex justify-between">

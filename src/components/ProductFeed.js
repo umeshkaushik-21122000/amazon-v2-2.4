@@ -43,7 +43,7 @@ function ProductFeed({products}) {
         )}
         </div>
 
-        {products.slice(5,155).map(({id,title,price,description,category,images})=>
+        {products.slice(5,23).map(({id,title,price,description,category,images})=>
         <Product 
                 key={id}
                 id={id}
