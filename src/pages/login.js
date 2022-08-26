@@ -70,7 +70,7 @@ function login({ providers }) {
                 </button>
 			</div>
 			<p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
-				<span>Don't have an account?</span>
+				<span>Don't have an account ?</span>
 				<a href="#" className="hover:text-yellow-500 no-underline hover:underline cursor-pointer transition ease-in duration-300">Sign up</a>
 			</p>
 		</form>
