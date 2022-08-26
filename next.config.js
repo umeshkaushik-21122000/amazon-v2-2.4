@@ -1,6 +1,6 @@
 module.exports= {
     images:{
-        domains: ["links.papareact.com","api.lorem.space","placeimg.com"],
+        domains: ["links.papareact.com","api.lorem.space","placeimg.com","fakestoreapi.com"],
     },
     env :{
         stripe_public_key: process.env.STRIPE_PUBLIC_KEY
